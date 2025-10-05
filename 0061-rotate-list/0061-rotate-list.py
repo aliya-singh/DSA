@@ -10,26 +10,36 @@ class Solution(object):
         :type k: int
         :rtype: Optional[ListNode]
         """
-
+        
         if not head or not head.next or k == 0:
             return head
-        
-        itr = head
-        l = 1
-        while itr.next:
-            itr = itr.next
-            l += 1
-        itr.next = head
-        
-        r = k % l
-        k = l - r
 
-        itrr = head
-        for _ in range(k-1):
-            itrr = itrr.next
+        x = head
+        n = 0
+        while x:
+            n += 1
+            x = x.next
+
+        a = k % n
+
+        x = head
+        nn = n - a
+        count = 0
+        if a == 0:
+            return head
+            
+        while count < nn - 1:
+            count += 1
+            x = x.next
         
-        new_head = itrr.next
-        itrr.next = None
+        new_head = x.next
+        x.next = None
+
+        aa = new_head 
+        while aa.next:
+            aa = aa.next
+        
+        aa.next = head
+
 
         return new_head
-
