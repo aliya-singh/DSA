@@ -6,15 +6,17 @@ class Solution(object):
         """
 
         n = len(nums)
-        flag = 0
-        temp = nums[0]
+        c = 0
+
         for i in range(n - 1):
-            if nums[i] > nums[i+1]:
-                flag += 1
-                if flag > 1:
+            if nums[i] <= nums[i + 1]:
+                continue
+            else:
+                c += 1
+                if c > 1:
                     return False
-
-        if flag == 1 and nums[0] < nums[-1]:
+        
+        if nums[n-1] > nums[0] and c == 1:
             return False
-
-        return True
+        else:
+            return True
