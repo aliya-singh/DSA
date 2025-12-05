@@ -4,13 +4,14 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+
+        sum = -float("inf")
+        curr = 0
+    
+        for i in nums:
+            curr += i
+            sum = max(curr, sum)
+            if curr < 0:
+                curr = 0
         
-        min = -float("inf")
-        sum = 0
-        for i in range(len(nums)):
-            sum += nums[i]
-            min = max(sum, min)
-            if sum < 0:
-                sum = 0
-        
-        return min
+        return sum
