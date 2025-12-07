@@ -4,10 +4,8 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        
         nums.sort()
-        n = len(nums)
-
-        for i in range(n-1):
+        for i in range(len(nums) - 1):
             if nums[i] == nums[i+1]:
                 return nums[i]
+            
