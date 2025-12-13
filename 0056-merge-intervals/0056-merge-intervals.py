@@ -8,18 +8,19 @@ class Solution(object):
         intervals.sort()
         n = len(intervals)
         l = []
-        start = intervals[0][0]
-        end = intervals[0][1]
-
+        
+        curr_start = intervals[0][0]
+        curr_end = intervals[0][1]
+        
         for i in range(1, n):
-            curr_start = intervals[i][0]
-            curr_end = intervals[i][1]
-            if curr_start <= end:
-                end = max(end, curr_end)
+            start = intervals[i][0]
+            end = intervals[i][1]
+            if curr_end >= start:
+                curr_end = max(end, curr_end)
             else:
-                l.append([start, end])
-                start = curr_start
-                end = curr_end
-        l.append([start, end])
-
+                l.append([curr_start, curr_end])
+                curr_start = start
+                curr_end = end
+        l.append([curr_start, curr_end])
         return l
+            
