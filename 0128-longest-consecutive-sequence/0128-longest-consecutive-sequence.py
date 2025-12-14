@@ -4,24 +4,19 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        if len(nums)==0:
+            return 0
         nums.sort()
-        n = len(nums)
-        count = 1
-        curr_count = 0
-
-        for i in range(1, n):
-            if nums[i] == nums[i-1]:
+        x = 1
+        ans = 1
+        for i in range(len(nums) - 1):
+            if nums[i] == nums[i+1]:
                 continue
-            if nums[i] == nums[i-1] + 1:
-                count += 1
-                if count > curr_count:
-                    curr_count = count
+            elif (nums[i] + 1) == nums[i+1]:
+                x += 1
             else:
-                if count > curr_count:
-                    curr_count = count
+                ans = max(ans, x)
+                x = 1
+        ans = max(ans, x)
+        return ans
 
-                count = 1
-        if count > curr_count and n >= 1:
-            return count
-        else:
-            return curr_count                
