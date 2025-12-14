@@ -5,17 +5,15 @@ class Solution(object):
         :rtype: int
         """
         
-        n = len(nums)
-        m = n / 2
         d = {}
-
-        for i in range(n):
-            if nums[i] not in d.keys():
-                d[nums[i]] = 1
+        for i in nums:
+            if i not in d.keys():
+                d[i] = 1
             else:
-                d[nums[i]] += 1
-
+                d[i] += 1
         
-        for i in d:
+        n = len(nums)
+        m = n/2
+        for i in d.keys():
             if d[i] > m:
                 return i
