@@ -1,9 +1,10 @@
 class Solution(object):
-    def factorial(self, a):
-        result = 1
-        for i in range(2, a+1):
-            result *= i
-        return result
+    def factorial(self, m):
+        fact = 1
+        for i in range(2, m):
+            fact *= i
+        
+        return fact
 
     def uniquePaths(self, m, n):
         """
@@ -11,18 +12,10 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        x = m + n - 2
-        r = m - 1
-        d = x - r
-        xf = factorial(x)
-        xr = factorial(r)
-        xd = factorial(d)
 
-        resultt = xf/(xr*xd)
+        a = factorial(m + n - 2)
+        b = factorial(n - 1)
+        c = factorial(m - 1)
 
-        return resultt
-
-
-
-
+        return a / (b * c)
         
