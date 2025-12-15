@@ -6,17 +6,20 @@ class Solution(object):
         """
 
         n = len(s)
-        d = {}
-        max_len = 0
-        left = 0
-
+        a = ""
+        m = 0
         for i in range(n):
-            if s[i] in d and d[s[i]] >= left:
-                left = d[s[i]] + 1
+            if s[i] not in a:
+                a += s[i]
+            else:
+                a = a[a.index(s[i]) + 1:] + s[i]
+        
+            m = max(m, len(a))
+        
 
-            d[s[i]] = i
-            max_len = max(max_len, i - left + 1)
+        return m
 
-        return max_len
 
-            
+
+
+        
