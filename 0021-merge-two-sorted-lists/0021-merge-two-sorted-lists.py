@@ -22,14 +22,10 @@ class Solution(object):
                 head.next = list2
                 list2 = list2.next
             head = head.next
-        
-        while list1:
+
+        if list1:
             head.next = list1
-            list1 = list1.next
-        
-        while list2:
+        else:
             head.next = list2
-            list2 = list2.next
 
         return dummy.next
-        
