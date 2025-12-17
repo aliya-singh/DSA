@@ -10,39 +10,14 @@ class Solution(object):
         :type head1, head1: ListNode
         :rtype: ListNode
         """
-        itr1 = headA
-        itr2 = headB
-        len1 = 0
-        len2 = 0
-
-
-        while itr1 or itr2:
-            if itr1:
-                len1 += 1
-                itr1 = itr1.next
-            
-            if itr2:
-                len2 += 1
-                itr2 = itr2.next
-
-        diff = abs(len1-len2)
-
-        it1 = headA
-        it2 = headB
-        count = 0
-        if len1 > len2:
-            while count < diff:
-                count += 1
-                it1 = it1.next
-        else:
-            while count < diff:
-                count += 1
-                it2 = it2.next
         
-        while it1 or it2:
-            if it1 == it2:
-                return it1
-            it1 = it1.next
-            it2 = it2.next
-
-
+        if headA is None or headB is None:
+            return None
+        
+        itr1, itr2 = headA, headB
+        while itr1 != itr2:
+            itr1 = itr1.next if itr1 else headB
+            itr2 = itr2.next if itr2 else headA
+        
+        return itr2
+   
