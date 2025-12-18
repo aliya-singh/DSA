@@ -5,21 +5,15 @@ class Solution(object):
         :type s: List[int]
         :rtype: int
         """
-
+        
         g.sort()
         s.sort()
-        count = 0
-        n = len(g)
-        m = len(s)
-        counts = 0
-        countg = 0
-        while counts < m and countg < n:
-            if g[countg] <= s[counts]:
-                count += 1
-                counts += 1
-                countg += 1
-            else:
-                counts += 1
-
-
-        return count
+        n, m = len(g), len(s)
+        cn, cm = 0, 0
+        ans = 0
+        while cn < n and cm < m:
+            if g[cn] <= s[cm]:
+                ans += 1
+                cn += 1
+            cm += 1
+        return ans
