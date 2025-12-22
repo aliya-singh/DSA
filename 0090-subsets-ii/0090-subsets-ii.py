@@ -1,23 +1,23 @@
 class Solution(object):
+    def subset(self, nums, ans, i):
+        if i == len(nums):
+            if ans[:] not in self.l:
+                self.l.append(ans[:])
+            return
+        
+        ans.append(nums[i])
+        self.subset(nums, ans, i+1)
+        ans.pop()
+        self.subset(nums, ans, i+1)
     def subsetsWithDup(self, nums):
         """
         :type nums: List[int]
         :rtype: List[List[int]]
         """
+        self.l = []
+        ans = []
         nums.sort()
-        res, sol = [], []
-        def backtracking(index):
-            res.append(sol[:])
-
-            for i in range(index, len(nums)):
-                if i > index and nums[i] == nums[i-1]:
-                    continue
-
-                sol.append(nums[i])
-                backtracking(i+1)
-                sol.pop()
-
-        backtracking(0)
-        return res
+        self.subset(nums, ans, 0)
+        return self.l
 
         
