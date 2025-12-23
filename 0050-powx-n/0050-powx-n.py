@@ -5,19 +5,17 @@ class Solution(object):
         :type n: int
         :rtype: float
         """
-
-        result = 1.0
+        
+        ans = 1
         m = abs(n)
-        while m > 0:
-            if m % 2 == 1:
-                result *= x
-                m = m - 1
+        while m:
+            if m%2 == 1:
+                ans *= x
+                m = m-1
             else:
-                x = x * x
-                m = m / 2
-
+                x = x*x
+                m = m/2
+        
         if n < 0:
-            result = 1 / result
-
-        return result
-
+            ans = 1/ans
+        return ans
