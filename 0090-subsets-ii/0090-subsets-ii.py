@@ -1,14 +1,16 @@
 class Solution(object):
-    def subset(self, nums, ans, i):
+    def subset(self, ans, nums, i):
         if i == len(nums):
             if ans[:] not in self.l:
                 self.l.append(ans[:])
             return
-        
+
         ans.append(nums[i])
-        self.subset(nums, ans, i+1)
+        self.subset(ans, nums, i+1)
         ans.pop()
-        self.subset(nums, ans, i+1)
+        self.subset(ans, nums, i+1)
+
+
     def subsetsWithDup(self, nums):
         """
         :type nums: List[int]
@@ -17,7 +19,6 @@ class Solution(object):
         self.l = []
         ans = []
         nums.sort()
-        self.subset(nums, ans, 0)
+        self.subset(ans, nums, 0)
         return self.l
-
         
