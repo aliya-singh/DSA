@@ -4,13 +4,14 @@ class Solution(object):
         :type matrix: List[List[int]]
         :rtype: None Do not return anything, modify matrix in-place instead.
         """
-        m = len(matrix)
-        n = len(matrix[0])
-
-        for i in range(m):
-            for j in range(i+1, n):
+        
+        n = len(matrix)
+        for i in range(n):
+            for j in range(i, n):
                 matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
         
-        for i in range(m):
+        for i in range(n):
             for j in range(n//2):
                 matrix[i][j], matrix[i][n-j-1] = matrix[i][n-j-1], matrix[i][j]
+
+        return matrix
