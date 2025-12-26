@@ -4,19 +4,20 @@ class Solution(object):
         :type matrix: List[List[int]]
         :rtype: None Do not return anything, modify matrix in-place instead.
         """
-        
-        m = len(matrix)
-        n = len(matrix[0])
-        row = [0] * m
-        col = [0] * n
+        n = len(matrix)
+        m = len(matrix[0])
 
-        for i in range(m):
-            for j in range(n):
-                if matrix[i][j] == 0:
-                    row[i] = 1
-                    col[j] = 1
+        a = [0] * n
+        b = [0] * m
         
-        for i in range(m):
-            for j in range(n):
-                if row[i] or col[j]:
+        for i in range(n):
+            for j in range(m):
+                if matrix[i][j] == 0:
+                    a[i] = 1
+                    b[j] = 1
+        
+        for i in range(n):
+            for j in range(m):
+                if a[i] == 1 or b[j] == 1:
                     matrix[i][j] = 0
+
