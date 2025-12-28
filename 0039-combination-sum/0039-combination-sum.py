@@ -4,13 +4,12 @@ class Solution(object):
             if target == 0:
                 self.l.append(ans[:])
             return
-       
         
         if candidates[i] <= target:
             ans.append(candidates[i])
             self.reccursion(candidates, target - candidates[i], ans, i)
             ans.pop()
-        self.reccursion(candidates, target, ans, i+1)
+        self.reccursion(candidates,target, ans, i+1)
 
     def combinationSum(self, candidates, target):
         """
@@ -22,4 +21,5 @@ class Solution(object):
         ans = []
         self.reccursion(candidates, target, ans, 0)
         return self.l
+
         
