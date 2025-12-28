@@ -20,7 +20,7 @@ class Solution(object):
             return False
 
         ds1 = self.hashMap(s1)
-        for i in range(len(s2) - len(s1)):
+        for i in range(len(s2) - len(s1) + 1):
             s = s2[i: i+len(s1)]
             ds = self.hashMap(s)
             if ds == ds1:
