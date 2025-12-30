@@ -4,31 +4,47 @@ class Solution(object):
         :type board: List[List[str]]
         :rtype: None Do not return anything, modify board in-place instead.
         """
-        def isvalid(row, col, dig):
-            for i in range(9):
-                if board[i][col] == dig or board[row][i] == dig:
-                    return False
-            
-            rs = (row//3) * 3
-            cs = (col//3) * 3
-            for i in range(rs, rs+3):
-                for j in range(cs, cs+3):
-                    if board[i][j] == dig:
-                        return False
-            
-            return True
+        row = [set() for _ in range(9)]
+        col = [set() for _ in range(9)] 
+        box = [set() for _ in range(9)]
+        empty = []
 
-        def backtrack():
-            for i in range(9):
-                for j in range(9):
-                    if board[i][j] == ".":
-                        for ch in "123456789":
-                            if isvalid(i, j, ch):
-                                board[i][j] = ch
-                                if backtrack():
-                                    return True
-                                board[i][j] = "."
-                        return False
-            return True
+        for i in range(9):
+            for j in range(9):
+                if board[i][j] != ".":
+                    row[i].add(board[i][j])
+                    col[j].add(board[i][j])
+                    box[(i // 3) * 3 + (j // 3)].add(board[i][j])
+                else:
+                    empty.append((i, j))
+
+        def backtraking(idx):
+            if idx == len(empty):
+                return True
+            
+            i, j = empty[idx]
+            x = ((i // 3)) * 3 + ((j // 3))
+            for dig in "123456789":
+                if dig not in row[i] and dig not in col[j] and dig not in box[x]:
+                    board[i][j] = dig
+                    row[i].add(dig)
+                    col[j].add(dig)
+                    box[x].add(dig)
+
+                    if backtraking(idx + 1):
+                        return True
+                    
+                    board[i][j] = "."
+                    row[i].remove(dig)
+                    col[j].remove(dig)
+                    box[x].remove(dig)
+            
+            return False
         
-        backtrack()
+        backtraking(0)
+
+
+
+
+
+
