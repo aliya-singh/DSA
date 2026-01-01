@@ -5,28 +5,35 @@ class Solution(object):
         :rtype: int
         """
         s = s.strip()
-        ans = 0
-        neg = False
+        sign = False
+        res = 0
         for i in range(len(s)):
             if i == 0 and s[i] == "-":
-                neg = True
+                sign = True
             elif i == 0 and s[i] == "+":
                 continue
             elif s[i].isdigit():
-                ans = int(s[i]) + ans*10
+                res = int(s[i]) + res * 10
             else:
                 break
-        if neg:
-            ans *= -1
         
-        min_int = -2**31
-        max_int = 2**31 - 1
+        if sign:
+            res = res * (-1)
         
-        if min_int > ans:
-            return min_int
-        if max_int < ans:
-            return max_int
-        return ans
+        mp = 2**31 - 1
+        mn = - 2**31
+
+        if sign:
+            if res < mn:
+                return mn
+            else:
+                return res 
+
+        if res > mp:
+            return mp
+        else:
+            return res
+
             
               
             
