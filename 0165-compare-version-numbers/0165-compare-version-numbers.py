@@ -6,33 +6,22 @@ class Solution(object):
         :rtype: int
         """
         v1, v2 = 0, 0
-        n, m = len(version1), len(version2)
-        while v1 < n and v2 < m:
-            s1 = ""
-            while v1 < n and version1[v1] != ".":
-                s1 += version1[v1]
+        n1, n2 = len(version1), len(version2)
+        while v1 < n1 or v2 < n2:
+            res1, res2 = 0, 0
+            while v1 < n1 and version1[v1] != ".":
+                res1 = res1 * 10 + int(version1[v1])
                 v1 += 1
             v1 += 1
-
-            s2 = ""
-            while v2 < m and version2[v2] != ".":
-                s2 += version2[v2]
+            
+            while v2 < n2 and version2[v2] != ".":
+                res2 = res2 * 10 + int(version2[v2])
                 v2 += 1
             v2 += 1
 
-            if int(s1) > int(s2):
-                return 1
-            elif int(s1) < int(s2):
+            if res1 < res2:
                 return -1
-        
-        while v1 < n:
-            if version1[v1] != "." and int(version1[v1]) > 0:
+            elif res1 > res2:
                 return 1
-            v1 += 1
         
-        while v2 < m:
-            if version2[v2] != "." and int(version2[v2]) > 0:
-                return -1
-            v2 += 1
-
         return 0
