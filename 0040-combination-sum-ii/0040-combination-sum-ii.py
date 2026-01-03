@@ -1,10 +1,8 @@
 class Solution(object):
     def reccursion(self, candidates, target, ans, i):
-        if target == 0:
-            self.l.append(ans[:])
-            return
-        
-        if i == len(candidates):
+        if i == len(candidates):    
+            if target == 0:
+                self.l.append(ans[:])
             return
         
         if candidates[i] <= target:
