@@ -15,7 +15,7 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         self.l = []
-        ans = []
-        self.reccursion(nums, ans, 0)
+        self.reccursion(nums, [], 0)
         return self.l
-        
+
+
