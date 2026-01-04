@@ -5,15 +5,17 @@ class Solution(object):
         :rtype: int
         """
         ans = 0
-        for i in nums:
-            temp = set()
-            for j in range(1, int(i**0.5) + 1):
-                if i % j == 0:
-                    temp.add(j)
-                    temp.add(i//j)
-                if len(temp) > 4:
+        for n in nums:
+            div = set()
+            for i in range(1, int(n**0.5 + 1)):
+                if n % i == 0:
+                    div.add(i)
+                    div.add(n//i)
+                
+                if len(div) > 4:
                     break
-            if len(temp) == 4:
-                ans += sum(temp)
-
+            
+            if len(div) == 4:
+                ans += sum(div)
+        
         return ans
