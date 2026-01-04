@@ -3,15 +3,14 @@ class Solution(object):
         if len(ans) == len(nums):
             self.l.append(ans[:])
             return
-        
-        for j in range(len(nums)):
-            if j not in d:
-                ans.append(nums[j])
-                d.append(j)
-                self.reccursion(nums, ans, d)
-                ans.pop()
-                d.pop()
 
+        for i in range(len(nums)):
+            if i not in d:
+                ans.append(nums[i])
+                d.append(i)
+                self.reccursion(nums, ans, d)
+                d.pop()
+                ans.pop()
 
     def permute(self, nums):
         """
@@ -21,8 +20,5 @@ class Solution(object):
         self.l = []
         ans = []
         d = []
-        # for i in range(len(nums)):
-        #     d[i] = -1
-
         self.reccursion(nums, ans, d)
         return self.l
