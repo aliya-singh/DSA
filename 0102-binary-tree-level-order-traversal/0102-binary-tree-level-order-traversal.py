@@ -11,7 +11,7 @@ class Solution(object):
         :type root: Optional[TreeNode]
         :rtype: List[List[int]]
         """
-        # level = 1
+        level = 1
         l = []
         if not root:
             return l
@@ -30,7 +30,7 @@ class Solution(object):
                 
                 if node.right:
                     queue.append(node.right)
-            # level += 1
+            level += 1
             l.append(ll)
         
         return l
