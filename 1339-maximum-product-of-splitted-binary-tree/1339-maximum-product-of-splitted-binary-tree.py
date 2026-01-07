@@ -10,17 +10,17 @@ class Solution(object):
         :type root: Optional[TreeNode]
         :rtype: int
         """
-        self.max_sum = 0
         mod = 10**9 + 7
+        self.max_pro = 0
 
-        def total(root):
+        def total_sum(root):
             if not root:
                 return 0
             
-            return root.val + total(root.left) + total(root.right)
+            return root.val + total_sum(root.left) + total_sum(root.right)
         
-        total = total(root)
-        
+        total = total_sum(root)
+
         def dfs(root):
             if not root:
                 return 0
@@ -29,9 +29,10 @@ class Solution(object):
             right = dfs(root.right)
 
             sub_sum = root.val + left + right
-            self.max_sum = max(self.max_sum, (total - sub_sum) * sub_sum)
 
+            self.max_pro = max(self.max_pro, sub_sum * (total - sub_sum))
             return sub_sum
-        
-        dfs(root) 
-        return self.max_sum % mod
+
+        dfs(root)
+        return self.max_pro % mod
+            
