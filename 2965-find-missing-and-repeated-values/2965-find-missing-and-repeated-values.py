@@ -4,19 +4,20 @@ class Solution(object):
         :type grid: List[List[int]]
         :rtype: List[int]
         """
-        # n = len(grid) * len(grid[0])
         l = []
         for i in grid:
             for j in i:
                 l.append(j)
-
+        
         l.sort()
-        rep = mis = -1
-        for i in range(1, len(l)):
-            if i > 0 and l[i-1] == l [i]:
+        mis = -1
+        if l[0] != 1:
+            mis = 1
+        for i in range(len(l)-1):
+            if l[i] == l[i+1]:
                 rep = l[i]
-            if i not in l and mis == -1:
-                mis = i
+            elif l[i] + 1 != l[i+1] and mis == -1:
+                mis = l[i] + 1
         if mis == -1:
             mis = len(l)
         return [rep, mis]
