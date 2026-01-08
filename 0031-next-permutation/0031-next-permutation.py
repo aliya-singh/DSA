@@ -5,22 +5,21 @@ class Solution(object):
         :rtype: None Do not return anything, modify nums in-place instead.
         """
 
+        temp = -2
         n = len(nums)
-        x = -2
         for i in range(n-1, 0, -1):
             if nums[i] > nums[i-1]:
-                x = i - 1
-                break
-
-        if x == -2:
-            nums.reverse()
-            return
-
-        for i in range(n-1, x, -1):
-            if nums[x] < nums[i]:
-                nums[i], nums[x] = nums[x], nums[i]
+                temp = i-1
                 break
         
-        nums[x+1:] = reversed(nums[x+1:])
-
-
+        if temp == -2:
+            nums.reverse()
+            return
+        
+        for i in range(n-1, temp, -1):
+            if nums[temp] < nums[i]:
+                nums[temp], nums[i] = nums[i], nums[temp]
+                break
+        
+        nums[temp+1:] = reversed(nums[temp+1:])
+        
