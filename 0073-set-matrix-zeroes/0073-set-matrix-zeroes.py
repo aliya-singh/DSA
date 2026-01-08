@@ -6,18 +6,20 @@ class Solution(object):
         """
         n = len(matrix)
         m = len(matrix[0])
+        row = [0] * n
+        col = [0] * m
 
-        a = [0] * n
-        b = [0] * m
-        
         for i in range(n):
             for j in range(m):
                 if matrix[i][j] == 0:
-                    a[i] = 1
-                    b[j] = 1
+                    row[i] = 1
+                    col[j] = 1
         
         for i in range(n):
             for j in range(m):
-                if a[i] == 1 or b[j] == 1:
+                if row[i] or col[j]:
                     matrix[i][j] = 0
+            
 
+
+        
