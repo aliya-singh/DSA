@@ -11,17 +11,14 @@ class Solution(object):
                 l.append(j)
 
         l.sort()
-        ans = []
+        rep = mis = -1
         for i in range(1, len(l)):
-            if l[i-1] == l[i]:
-                ans.append(l[i-1])
-                break
-        
-        for i in range(1, len(l)+1):
-            if i not in l:
-                ans.append(i)
-                break
-
-        return ans
+            if i > 0 and l[i-1] == l [i]:
+                rep = l[i]
+            if i not in l and mis == -1:
+                mis = i
+        if mis == -1:
+            mis = len(l)
+        return [rep, mis]
             
 
