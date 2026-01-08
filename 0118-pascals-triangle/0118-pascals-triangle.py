@@ -7,13 +7,13 @@ class Solution(object):
         
         l = []
         for i in range(numRows):
-            li = []
+            ll = []
             for j in range(i+1):
                 if j == 0 or j == i:
-                    li.append(1)
+                    ll.append(1)
                 else:
-                    li.append(l[i-1][j-1] + l[i-1][j])
+                    ll.append(l[i-1][j] + l[i-1][j-1])
             
-            l.append(li)
-        
+            l.append(ll)
+
         return l
