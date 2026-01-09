@@ -10,12 +10,12 @@ class Solution(object):
         :rtype: Optional[ListNode]
         """
         
-        itr = head
         prev = None
+        itr = head
         while itr:
-            x = itr.next
+            next = itr.next
             itr.next = prev
             prev = itr
-            itr = x
+            itr = next
         
         return prev
