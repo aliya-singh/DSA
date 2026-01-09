@@ -6,11 +6,13 @@ class Solution(object):
         :rtype: List[int]
         """
 
+        d = {}
         n = len(nums)
-        for i in range(n-1):
-            for j in range(i+1, n):
-                sum = nums[i] + nums[j]
-                if sum == target:
-                    return [i, j]
+        for i in range(n):
+            d[nums[i]] = i
+        for i in range(n):
+            rem = target - nums[i]
+            if rem in d and d[rem] != i:
+                return [d[rem], i]
 
         
