@@ -22,10 +22,11 @@ class Solution(object):
                 head.next = list2
                 list2 = list2.next
             head = head.next
-
+        
         if list1:
             head.next = list1
         else:
             head.next = list2
 
         return dummy.next
+        
