@@ -4,22 +4,15 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-
-        n = len(s)
-        a = ""
-        m = 0
-        for i in range(n):
-            if s[i] not in a:
-                a += s[i]
-            else:
-                a = a[a.index(s[i]) + 1:] + s[i]
+        seen = set()
+        left = 0
+        ans = 0
+        for i in range(len(s)):
+            while s[i] in seen:
+                seen.remove(s[left])
+                left += 1
+            
+            seen.add(s[i])
+            ans = max(ans, i - left + 1)
         
-            m = max(m, len(a))
-        
-
-        return m
-
-
-
-
-        
+        return ans
