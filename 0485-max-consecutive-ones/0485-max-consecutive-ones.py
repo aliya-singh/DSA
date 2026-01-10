@@ -4,13 +4,15 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        m = 0
+
         c = 0
+        x = 0
         for i in nums:
             if i == 1:
                 c += 1
-                m = max(c, m)
             else:
                 c = 0
+            x = max(c, x)
         
-        return m
+        return x
+        
