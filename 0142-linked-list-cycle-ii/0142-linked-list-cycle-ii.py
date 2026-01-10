@@ -10,9 +10,9 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        
-        itr = head
         d = {}
+        itr = head
+        i = -1
         while itr and 2 not in d.values():
             if itr not in d:
                 d[itr] = 1
@@ -20,22 +20,6 @@ class Solution(object):
                 d[itr] += 1
             itr = itr.next
         
-        if 2 not in d.values():
-            return None
-
         for i in d:
             if d[i] == 2:
-                x = i
-                break
-        
-        return x
-        # itr = head
-        # c = 0
-        # while itr:
-        #     if itr == x:
-        #         break
-        #     c += 1
-        #     itr = itr.next
-        
-        # return c
-
+                return i
