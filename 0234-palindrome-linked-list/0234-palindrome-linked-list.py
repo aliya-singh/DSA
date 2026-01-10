@@ -9,9 +9,9 @@ class Solution(object):
         :type head: Optional[ListNode]
         :rtype: bool
         """
-        
         l = []
         itr = head
+
         while itr:
             l.append(itr.val)
             itr = itr.next
