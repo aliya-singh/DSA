@@ -10,14 +10,14 @@ class Solution(object):
         :type head: ListNode
         :rtype: bool
         """
-        
-        itr = head
         d = {}
+        itr = head
         while itr and 2 not in d.values():
             if itr.next not in d:
                 d[itr.next] = 1
             else:
                 d[itr.next] += 1
+            
             itr = itr.next
         
         if 2 in d.values():
