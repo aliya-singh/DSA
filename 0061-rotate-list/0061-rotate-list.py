@@ -10,32 +10,25 @@ class Solution(object):
         :type k: int
         :rtype: Optional[ListNode]
         """
-
-        if head is None or head.next is None or k == 0:
-            return head
-        
+        if not head:
+            return
         n = 0
+        l = []
         itr = head
         while itr:
             n += 1
+            l.append(itr.val)
             itr = itr.next
         
-        x = k % n
-        b = n-x
-        if x == 0:
-            return head
-        c = 0
+        a = k % n
+        b = n - a
+        l = l[b:] + l[:b]
+
         itr = head
-        while c<b-1:
-            c += 1
+        for i in l:
+            itr.val = i
             itr = itr.next
-        
-        new_head = itr.next
-        itr.next = None
-        h = new_head
-        while h.next:
-            h = h.next    
-        h.next = head
-        return new_head
+
+        return head
 
 
