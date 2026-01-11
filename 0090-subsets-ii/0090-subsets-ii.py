@@ -7,12 +7,9 @@ class Solution(object):
         ans.append(nums[i])
         self.reccursion(nums, ans, i+1)
         ans.pop()
-        i = i+1
-        while i < len(nums) and nums[i-1] == nums[i]:
-            i = i+1
-        
-        self.reccursion(nums, ans, i)
-
+        while i+1 < len(nums) and nums[i] == nums[i+1]:
+            i += 1 
+        self.reccursion(nums, ans, i+1)
 
     def subsetsWithDup(self, nums):
         """
@@ -20,9 +17,6 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         self.l = []
-        ans = []
-        i = 0
         nums.sort()
-        self.reccursion(nums, ans, i)
+        self.reccursion(nums, [], 0)
         return self.l
-        
