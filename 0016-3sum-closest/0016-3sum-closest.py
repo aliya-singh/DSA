@@ -7,27 +7,19 @@ class Solution(object):
         """
         nums.sort()
         n = len(nums)
-        curr_sum = float('inf')
-
-        for i in range(n-2):
-            left = i + 1
-            right = n - 1
-            while left < right:
-                sum = nums[left] + nums[right] + nums[i]
-                if abs(target - sum) < abs(target - curr_sum):
-                    curr_sum = sum
-                
+        ans = float("inf")
+        for i in range(n-1):
+            start = i + 1
+            end = n - 1
+            while start < end:
+                sum = nums[start] + nums[end] + nums[i]
+                if abs(target - ans) > abs(target - sum):
+                    ans = sum
                 if target > sum:
-                    left += 1
+                    start += 1
                 elif target < sum:
-                    right -= 1
-                else: 
+                    end -= 1
+                else:
                     return target
-
-        return curr_sum
-                    
-
-
-
-            
-
+        
+        return ans
