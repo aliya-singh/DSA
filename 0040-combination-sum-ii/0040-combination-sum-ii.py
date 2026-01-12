@@ -1,19 +1,19 @@
 class Solution(object):
-    def reccursion(self, candidates, target, ans, i):
-        if i == len(candidates):    
+    def reccursion(self, candidates, target, i, ans):
+        if i == len(candidates):
             if target == 0:
                 self.l.append(ans[:])
-            return
+            return 
         
         if candidates[i] <= target:
             ans.append(candidates[i])
-            self.reccursion(candidates, target - candidates[i], ans, i+1)
+            self.reccursion(candidates, target - candidates[i], i+1, ans)
             ans.pop()
-            while i+1 < len(candidates) and candidates[i] == candidates[i+1]:
-                i = i+1
-        self.reccursion(candidates, target, ans, i+1)
+            while i + 1 < len(candidates) and candidates[i] == candidates[i+1]:
+                i = i + 1 
+        self.reccursion(candidates, target, i+1, ans)
 
-        
+
     def combinationSum2(self, candidates, target):
         """
         :type candidates: List[int]
@@ -21,7 +21,7 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         self.l = []
-        ans = []
         candidates.sort()
-        self.reccursion(candidates, target, ans, 0)
+        self.reccursion(candidates, target, 0, [])
         return self.l
+
