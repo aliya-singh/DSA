@@ -1,5 +1,5 @@
 class Solution(object):
-    def reccursion(self, candidates, target, ans, i):
+    def reccursion(self, candidates, target, i, ans):
         if i == len(candidates):
             if target == 0:
                 self.l.append(ans[:])
@@ -7,9 +7,9 @@ class Solution(object):
         
         if candidates[i] <= target:
             ans.append(candidates[i])
-            self.reccursion(candidates, target - candidates[i], ans, i)
+            self.reccursion(candidates, target - candidates[i], i, ans)
             ans.pop()
-        self.reccursion(candidates,target, ans, i+1)
+        self.reccursion(candidates, target, i+1, ans)
 
     def combinationSum(self, candidates, target):
         """
@@ -18,8 +18,5 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         self.l = []
-        ans = []
-        self.reccursion(candidates, target, ans, 0)
+        self.reccursion(candidates, target, 0, [])
         return self.l
-
-        
