@@ -1,5 +1,5 @@
 class Solution(object):
-    def reccursion(self, s, ans, i):
+    def reccursion(self, ans, s, i):
         if i == len(s):
             self.l.append(ans[:])
             return
@@ -8,7 +8,7 @@ class Solution(object):
             ss = s[i:j]
             if ss == ss[::-1]:
                 ans.append(ss)
-                self.reccursion(s, ans, j)
+                self.reccursion(ans, s, j)
                 ans.pop()
 
     def partition(self, s):
@@ -17,7 +17,6 @@ class Solution(object):
         :rtype: List[List[str]]
         """
         self.l = []
-        ans = []
-        self.reccursion(s, ans, 0)
+        self.reccursion([], s, 0)
         return self.l
 
