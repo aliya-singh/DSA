@@ -11,7 +11,6 @@ class Solution(object):
         :type root: Optional[TreeNode]
         :rtype: List[List[int]]
         """
-        level = 1
         l = []
         if not root:
             return l
@@ -20,7 +19,6 @@ class Solution(object):
 
         while queue:
             ll = []
-
             for _ in range(len(queue)):
                 node = queue.popleft()
                 ll.append(node.val)
@@ -30,9 +28,8 @@ class Solution(object):
                 
                 if node.right:
                     queue.append(node.right)
-            level += 1
+            
             l.append(ll)
         
         return l
 
-        
