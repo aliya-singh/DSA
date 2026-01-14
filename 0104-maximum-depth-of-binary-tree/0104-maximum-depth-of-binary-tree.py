@@ -13,9 +13,10 @@ class Solution(object):
         """
         level = 0
         if not root:
-            return level
+            return level 
+        
         queue = deque([root])
-    
+
         while queue:
             for _ in range(len(queue)):
                 node = queue.popleft()
@@ -23,8 +24,8 @@ class Solution(object):
                     queue.append(node.left)
                 if node.right:
                     queue.append(node.right)
+            
             level += 1
         
         return level
-
         
