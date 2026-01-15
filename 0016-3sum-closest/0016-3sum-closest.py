@@ -5,26 +5,25 @@ class Solution(object):
         :type target: int
         :rtype: int
         """
-        n = len(nums)
         nums.sort()
-        mi = float("inf")
-        for i in range(n-2):
+        n = len(nums)
+        m = float("inf")
+        for i in range(n-1):
             if i > 0 and nums[i] == nums[i-1]:
                 continue
+
             start = i + 1
             end = n - 1
             while start < end:
-                sum = nums[i] + nums[start] + nums[end]
-                res = abs(sum-target)
-                if res < mi:
-                    ans = sum
-                    mi = res
-                if target > sum:
-                    start += 1
-                elif target < sum:
-                    end -= 1
-                else:
+                s = nums[i] + nums[start] + nums[end]
+                if s == target:
                     return target
-                
-            
+                if abs(target - s) < m:
+                    m = abs(target - s)
+                    ans = s
+                if s > target:
+                    end = end - 1
+                else:
+                    start = start + 1
+        
         return ans
