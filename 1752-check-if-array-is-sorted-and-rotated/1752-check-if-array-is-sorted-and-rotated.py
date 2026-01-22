@@ -14,7 +14,7 @@ class Solution(object):
                     return False
         
         if c == 1:
-            if nums[-1] < nums[0]:
+            if nums[-1] <= nums[0]:
                 return True
             else:
                 return False
